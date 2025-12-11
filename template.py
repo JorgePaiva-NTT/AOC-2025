@@ -9,5 +9,12 @@ def parse(raw_data):
 def part1(data):
     return "TODO"
 
+def part2(data):
+    return "TODO"
+
 if __name__ == "__main__":
-    run_solution(__file__, parse, part1, part2)
+    is_test = False
+    print(sys.argv)
+    if (sys.argv and len(sys.argv) > 1 and sys.argv[1] == "t"):
+        is_test = True
+    run_solution(__file__, parse, part1, part2, is_test)

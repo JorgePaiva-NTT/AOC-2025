@@ -18,6 +18,7 @@ if (-not (Test-Path $folderName)) {
 $pyFile = Join-Path $folderName "day$Day.py"
 $readmeFile = Join-Path $folderName "README.md"
 $inputFile = Join-Path $folderName "input.txt"
+$inputeTestFile = Join-Path $folderName "input_test.txt"
 $templateFile = "template.py"
 
 # Create day{i}.py
@@ -40,7 +41,9 @@ if (-not (Test-Path $readmeFile)) {
 # Create input.txt
 if (-not (Test-Path $inputFile)) {
     New-Item -ItemType File -Path $inputFile | Out-Null
+    New-Item -ItemType File -Path $inputeTestFile | Out-Null
     Write-Host "Created file: $inputFile"
+    Write-Host "Created file: $inputeTestFile"
 }
 
 Write-Host "Done setup for Day $Day"
