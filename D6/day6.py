@@ -19,10 +19,15 @@ def parse(raw_data):
             
     return grid, operators
 
-def part1(data):
+def get_columns(data):
     columns = [[data[0][r][c] for r in range(len(data[0]))] for c in range(len(data[0][0]))]
+    return columns
+
+def part1(data):
+    columns = get_columns(data)
     results = []
     for x, column in enumerate(columns):
+        print(column)
         operator = data[1][x]
         result = 0
         for i, val in enumerate(column):
@@ -42,7 +47,26 @@ def part1(data):
     return sum(results)
         
 def part2(data):
-    return "TODO"
+    operators = data[1]
+    columns = get_columns(data)
+    results = []
+    for x, column in enumerate(columns):
+        print(column)
+        operator = operators[x]
+        max_num_length = len(str(max(column)))
+        for val in range(max_num_length, 0, -1):
+            new_num = "0"
+            for i, num in enumerate(column):
+                num_filed = str(num).zfill(max_num_length)
+                value = ""
+                try:
+                    value = num_filed[val - 1]
+                except IndexError:
+                    value = ""
+                new_num += value
+            print(int(new_num))
+    return ""
+                    
 
 if __name__ == "__main__":
     is_test = False
