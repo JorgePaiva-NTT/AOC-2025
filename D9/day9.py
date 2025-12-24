@@ -4,10 +4,21 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from utils import run_solution
 
 def parse(raw_data):
-    return raw_data.splitlines()
+    return [(int(p.split(',')[0]), int(p.split(',')[1])) for p in [d.replace('\n', '') for d in raw_data]]
 
 def part1(data):
-    return "TODO"
+    biggest_area = 0
+    for point in data:
+        x, y = point
+        for other_point in data:
+            if other_point == point:
+                continue
+            ox, oy = other_point
+            area = max(1, abs(ox - x - 1)) * max(1, abs(oy - y - 1))
+            if area > biggest_area:
+                biggest_area = area
+    return biggest_area
+
 
 def part2(data):
     return "TODO"
